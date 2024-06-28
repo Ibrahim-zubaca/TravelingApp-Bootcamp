@@ -74,7 +74,17 @@ struct DiscoverCategoryView: View {
 
 
 //POPULAR DESTINATION SECTION ----------------------------------
+
+struct Destination:Hashable {
+    let name, country, imageName: String
+}
 struct PopularDestinationView: View {
+    
+    let destination: [Destination] = [
+        .init(name: "Paris", country: "France", imageName: "Paris"),
+        .init(name: "Tokyo", country: "Japan", imageName: "Tokyo"),
+        .init(name: "New York", country: "USA", imageName: "NewYork"),
+    ]
     var body: some View {
         VStack{
             HStack{
@@ -90,13 +100,39 @@ struct PopularDestinationView: View {
             .padding(.top,30)
             
             ScrollView(.horizontal, showsIndicators: false){
-                HStack {
-                    ForEach(0..<5, id: \.self) { num in
-                        Rectangle()
-                            .frame(width: 150, height: 180)
+                HStack (spacing: 10) {
+                    ForEach(destination, id: \.self) { destination in
+                        VStack (alignment: .leading, spacing: 0){
+                            
+                            Image(destination.imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 100)
+                                .cornerRadius(8)
+                                .padding(5)
+                                .padding(.top, 0)
+                                
+                            Spacer()
+                            
+                            HStack{
+                                Spacer()
+                            }
+                            Text(destination.name)
+                                .font(.headline)
+                                .padding(.horizontal,12)
+                            
+                            Text(destination.country)
+                                .font(.subheadline)
+                                .padding(.horizontal,12)
+                                .foregroundColor(.gray)
+                        }
+                            .padding(.bottom)
+                            .background(.thinMaterial)
                             .cornerRadius(10)
-                            .foregroundColor(.gray)
+                            .shadow(radius: 4, x:0, y:2)
+                            
                     }
+                    .padding(.vertical)
                 }
                 .padding(.horizontal)
                 
