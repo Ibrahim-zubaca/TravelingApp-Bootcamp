@@ -34,16 +34,17 @@ struct ContentView_Previews: PreviewProvider {
 //CATEGORY SECTION ----------------------------------
 struct Category: Hashable {
     let name, imageName: String
+    let color: Color
 }
 
 struct DiscoverCategoryView: View {
     
     let categories: [Category] = [
-        .init(name: "Art", imageName: "paintpalette.fill"),
-        .init(name: "Sport", imageName: "sportscourt.fill"),
-        .init(name: "Live Envents", imageName: "music.mic"),
-        .init(name: "Food", imageName: "fork.knife"),
-        .init(name: "History", imageName: "building.columns")
+        .init(name: "Art", imageName: "paintpalette.fill", color: Color.orange),
+        .init(name: "Sport", imageName: "sportscourt.fill", color: Color.purple),
+        .init(name: "Live Envents", imageName: "music.mic", color: Color.yellow),
+        .init(name: "Food", imageName: "fork.knife", color: Color.green),
+        .init(name: "History", imageName: "building.columns", color: Color.blue)
     ]
     
     var body: some View {
@@ -55,7 +56,7 @@ struct DiscoverCategoryView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 25))
                             .frame(width:70, height: 70)
-                            .background(Color.gray)
+                            .background(category.color)
                             .cornerRadius(50)
                             .shadow(color: .gray, radius: 4, x:0, y:2)
                         Text(category.name)
@@ -81,15 +82,18 @@ struct Destination:Hashable {
 struct PopularDestinationView: View {
     
     let destination: [Destination] = [
+        .init(name: "Sarajevo", country: "B&H", imageName: "Sarajevo"),
+        .init(name: "Dubrovnik", country: "Croatia", imageName:"Dubrovnik"),
         .init(name: "Paris", country: "France", imageName: "Paris"),
         .init(name: "Tokyo", country: "Japan", imageName: "Tokyo"),
-        .init(name: "New York", country: "USA", imageName: "NewYork"),
+        .init(name: "New York", country: "USA", imageName: "NewYork")
+        
     ]
     var body: some View {
         VStack{
             HStack{
                 Text("Popular destination")
-                    .font(.subheadline)
+                    .font(.title3)
                     .fontWeight(.semibold)
                 Spacer()
                 Text("See all")
@@ -107,7 +111,7 @@ struct PopularDestinationView: View {
                             Image(destination.imageName)
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 140, height: 100)
+                                .frame(width: 180, height: 180)
                                 .cornerRadius(8)
                                 .padding(5)
                                 .padding(.top, 0)
@@ -129,7 +133,7 @@ struct PopularDestinationView: View {
                             .padding(.bottom)
                             .background(.thinMaterial)
                             .cornerRadius(10)
-                            .shadow(radius: 4, x:0, y:2)
+                            .shadow(radius: 4, x:0, y:0)
                             
                     }
                     .padding(.vertical)
@@ -142,12 +146,21 @@ struct PopularDestinationView: View {
 }
 
 //POPULAR PLACES TO EAT SECTION ----------------------------------
+struct Restaurants:Hashable {
+    let name: String, imageName: String
+}
 struct PopularRestaurantsView: View {
+    
+    let restaurants: [Restaurants] = [
+        .init(name: "Japanese Sushi", imageName: "sushi"),
+        .init(name: "Čevabdžinica Sarajevo", imageName: "cevapi"),
+        .init(name: "American Burgers", imageName: "burger"),
+    ]
     var body: some View {
         VStack{
             HStack{
                 Text("Popular places to eat")
-                    .font(.subheadline)
+                    .font(.title3)
                     .fontWeight(.semibold)
                 Spacer()
                 Text("See all")
@@ -155,18 +168,58 @@ struct PopularRestaurantsView: View {
                     .fontWeight(.semibold)
             }
             .padding(.horizontal)
-            .padding(.top,30)
+            .padding(.top,10)
             
             ScrollView(.horizontal, showsIndicators: false){
-                HStack {
-                    ForEach(0..<5, id: \.self) { num in
-                        Rectangle()
-                            .frame(width: 200, height:64)
+                HStack (spacing: 8.0) {
+                    ForEach(restaurants, id: \.self) { restaurant in
+                        HStack(spacing: 8) {
+                            Image(restaurant.imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .clipped()
+                                .cornerRadius(8)
+                                .padding(.leading, 5)
+                                .padding(.vertical, 5)
+                                
+                
+                            VStack (alignment: .leading, spacing: 4) {
+                                HStack {
+                                    Text(restaurant.name)
+                                        .font(.system(size: 15))
+                                    .fontWeight(.semibold)
+                                    Spacer()
+                                    Button {
+                                        //code
+                                    } label: {
+                                        Image(systemName: "ellipsis")
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                .padding(.trailing,9)
+                                
+                                HStack {
+                                    Image(systemName: "star.fill")
+                                    //Option + 8 for dot
+                                    Text("4.7 • Sushi • $$")
+                                }
+                                .font(.caption)
+                                
+                                Text("Tokyo, Japan")
+                                    .font(.system(size: 12))
+                            }
+                        }
+                            .frame(width: 270)
+                            .background(.thinMaterial)
                             .cornerRadius(10)
-                            .foregroundColor(.gray)
+                            
+                            
+                            
                     }
                 }
                 .padding(.horizontal)
+                
                 
             }
         }
@@ -174,13 +227,27 @@ struct PopularRestaurantsView: View {
 }
 
 //TRENDING CREATORS SECTION ----------------------------------
+struct User: Hashable {
+    let name, imageName: String
+}
+
 struct TrendingCreatorsView: View {
+    let creators: [User] = [
+        .init(name: "Josh Puke", imageName: "person1"),
+        .init(name: "Sara Hall", imageName: "person2"),
+        .init(name: "Jake Smith", imageName: "person3"),
+        .init(name: "Jamin Doe", imageName: "person4"),
+        .init(name: "Josh Puke", imageName: "person1"),
+        .init(name: "Sara Hall", imageName: "person2"),
+        .init(name: "Jake Smith", imageName: "person3"),
+        .init(name: "Jamin Doe", imageName: "person4"),
+    ]
     var body: some View {
         
             VStack{
                 HStack{
                     Text("Popular Creators")
-                        .font(.subheadline)
+                        .font(.title3)
                         .fontWeight(.semibold)
                     Spacer()
                     Text("See all")
@@ -191,14 +258,19 @@ struct TrendingCreatorsView: View {
                 .padding(.top,30)
                 
                 ScrollView(.horizontal, showsIndicators: false){
-                    HStack(spacing: 8){
-                        ForEach(0..<16, id: \.self) { num in
+                    HStack(spacing: 20){
+                        ForEach(creators, id: \.self) { user in
                             VStack {
-                                Spacer()
-                                    .frame(width: 60, height: 60)
-                                    .background(.gray)
-                                    .cornerRadius(.infinity)
-                                Text("Art")
+                                VStack {
+                                    Image(user.imageName)
+                                        .resizable()
+                                        .scaledToFill()
+                                }
+                                .frame(width: 70, height: 70)
+                                .cornerRadius(.infinity)
+                                .shadow(color: .gray, radius: 4, x: 0, y: 0)
+                                
+                                Text(user.name)
                                     .font(.caption)
                                     .fontWeight(.semibold)
                                     .padding(.top, 5)
