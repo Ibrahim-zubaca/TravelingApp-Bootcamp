@@ -8,14 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
+    //Init to change title bar color in whole app
+    init(){
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+    }
     var body: some View {
         NavigationView {
-            ScrollView {
-                DiscoverCategoryView()
-                PopularDestinationView()
-                PopularRestaurantsView()
-                TrendingCreatorsView()
-                }
+            ZStack {
+                
+                LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                
+                ScrollView {
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                        Text("Where do you want to go?")
+                        Spacer()
+                    }
+                    .foregroundColor(.white)
+                    .padding(.vertical)
+                    .padding(.horizontal)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    
+                    
+                    DiscoverCategoryView()
+                    
+                    VStack {
+                    PopularDestinationView()
+                    PopularRestaurantsView()
+                    TrendingCreatorsView()
+                    }
+                    .background(.thinMaterial)
+                    .cornerRadius(25)
+                    
+                    }
+            }
+            
             .navigationTitle("Discover")
         }
     }
@@ -34,17 +66,16 @@ struct ContentView_Previews: PreviewProvider {
 //CATEGORY SECTION ----------------------------------
 struct Category: Hashable {
     let name, imageName: String
-    let color: Color
 }
 
 struct DiscoverCategoryView: View {
     
     let categories: [Category] = [
-        .init(name: "Art", imageName: "paintpalette.fill", color: Color.orange),
-        .init(name: "Sport", imageName: "sportscourt.fill", color: Color.purple),
-        .init(name: "Live Envents", imageName: "music.mic", color: Color.yellow),
-        .init(name: "Food", imageName: "fork.knife", color: Color.green),
-        .init(name: "History", imageName: "building.columns", color: Color.blue)
+        .init(name: "Art", imageName: "paintpalette.fill"),
+        .init(name: "Sport", imageName: "sportscourt.fill"),
+        .init(name: "Live Envents", imageName: "music.mic"),
+        .init(name: "Food", imageName: "fork.knife"),
+        .init(name: "History", imageName: "building.columns")
     ]
     
     var body: some View {
@@ -53,13 +84,14 @@ struct DiscoverCategoryView: View {
                 ForEach(categories, id: \.self) { category in
                     VStack {
                         Image(systemName: category.imageName)
-                            .foregroundColor(.white)
+                            .foregroundColor(.orange)
                             .font(.system(size: 25))
                             .frame(width:70, height: 70)
-                            .background(category.color)
+                            .background(.white)
                             .cornerRadius(50)
-                            .shadow(color: .gray, radius: 4, x:0, y:2)
+                            //.shadow(color: .gray, radius: 4, x:0, y:2)
                         Text(category.name)
+                            .foregroundColor(.white)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .padding(.top, 5)
@@ -68,6 +100,7 @@ struct DiscoverCategoryView: View {
             }
             .padding(.horizontal)
             .padding(.top)
+            .padding(.bottom,30)
         }
     }
 }
@@ -93,7 +126,7 @@ struct PopularDestinationView: View {
         VStack{
             HStack{
                 Text("Popular destination")
-                    .font(.title3)
+                    .font(.headline)
                     .fontWeight(.semibold)
                 Spacer()
                 Text("See all")
@@ -133,7 +166,7 @@ struct PopularDestinationView: View {
                             .padding(.bottom)
                             .background(.thinMaterial)
                             .cornerRadius(10)
-                            .shadow(radius: 4, x:0, y:0)
+                            //.shadow(radius: 4, x:0, y:0)
                             
                     }
                     .padding(.vertical)
@@ -160,7 +193,7 @@ struct PopularRestaurantsView: View {
         VStack{
             HStack{
                 Text("Popular places to eat")
-                    .font(.title3)
+                    .font(.headline)
                     .fontWeight(.semibold)
                 Spacer()
                 Text("See all")
@@ -247,7 +280,7 @@ struct TrendingCreatorsView: View {
             VStack{
                 HStack{
                     Text("Popular Creators")
-                        .font(.title3)
+                        .font(.headline)
                         .fontWeight(.semibold)
                     Spacer()
                     Text("See all")
@@ -279,6 +312,7 @@ struct TrendingCreatorsView: View {
                     }
                     .padding(.horizontal)
                     .padding(.top)
+                    .padding(.bottom)
                     
                 }
             }
