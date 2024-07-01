@@ -54,18 +54,41 @@ struct DiscoverCategoryView: View {
     }
 }
 
+struct Place: Decodable, Hashable {
+    let name, thumbnail: String
+}
+
 class CategoryDetailsViewModel: ObservableObject {
     @Published var isLoading = true
-    @Published var places = [Int]()
+    @Published var places = [Place]()
     
     init() {
-        //Networc code will hapen here
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.isLoading = false
-            self.places = [1,2,3,4,5,6,7]
-        }
+        //Network code will hapen here
+        //Real network code
+        guard let url = URL(string:"https://travel.letsbuildthatapp.com/travel_discovery/category?name=art") else {return}
+        
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            
+            //You want to check resp statusCOde and err
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                
+                guard let data = data else { return }
+                
+                
+                do {
+                    self.places = try JSONDecoder().decode([Place].self, from: data)
+                } catch {
+                    print("Failed to decode JSON")
+                }
+                
+                self.isLoading = false
+                //self.places = [1]
+            }
+        }.resume()
     }
 }
+
 //Loader code ----------------
 struct ActivityIndicatorView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIActivityIndicatorView {
@@ -102,12 +125,12 @@ struct CategoryDetailView: View {
             else {
                 
                 ScrollView {
-                    ForEach(vm.places, id: \.self){ num in
+                    ForEach(vm.places, id: \.self){ place in
                         VStack (alignment: . leading, spacing: 0) {
                             Image("Sarajevo")
                                 .resizable()
                                 .scaledToFill()
-                            Text("Lorem ipsum dolor sit amet")
+                            Text(place.name)
                                 .font(.subheadline)
                                 .padding()
                             
@@ -118,6 +141,7 @@ struct CategoryDetailView: View {
                     
                 }
                 .navigationBarTitle("Category", displayMode: .inline)
+             
             }
         }
         
