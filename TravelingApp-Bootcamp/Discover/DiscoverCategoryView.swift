@@ -106,6 +106,9 @@ struct ActivityIndicatorView: UIViewRepresentable {
 }
 //-----------------------
 
+import Kingfisher
+import SDWebImageSwiftUI
+
 struct CategoryDetailView: View {
     @ObservedObject var vm = CategoryDetailsViewModel()
     var body: some View {
@@ -127,7 +130,7 @@ struct CategoryDetailView: View {
                 ScrollView {
                     ForEach(vm.places, id: \.self){ place in
                         VStack (alignment: . leading, spacing: 0) {
-                            Image("Sarajevo")
+                            KFImage(URL(string: place.thumbnail))
                                 .resizable()
                                 .scaledToFill()
                             Text(place.name)

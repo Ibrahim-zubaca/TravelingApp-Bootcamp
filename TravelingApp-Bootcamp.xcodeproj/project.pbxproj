@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3650C2B42C32904D008B305D /* BorderBgModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650C2B32C32904D008B305D /* BorderBgModifier.swift */; };
+		3650C2B72C32C45D008B305D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3650C2B62C32C45D008B305D /* Kingfisher */; };
+		3650C2BA2C32C4A0008B305D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3650C2B92C32C4A0008B305D /* SDWebImageSwiftUI */; };
 		3699FA372C2E98D1008511AA /* TravelingApp_BootcampApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */; };
 		3699FA392C2E98D1008511AA /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699FA382C2E98D1008511AA /* DiscoverView.swift */; };
 		3699FA3B2C2E98D2008511AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3699FA3A2C2E98D2008511AA /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3650C2BA2C32C4A0008B305D /* SDWebImageSwiftUI in Frameworks */,
+				3650C2B72C32C45D008B305D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,10 @@
 			dependencies = (
 			);
 			name = "TravelingApp-Bootcamp";
+			packageProductDependencies = (
+				3650C2B62C32C45D008B305D /* Kingfisher */,
+				3650C2B92C32C4A0008B305D /* SDWebImageSwiftUI */,
+			);
 			productName = "TravelingApp-Bootcamp";
 			productReference = 3699FA332C2E98D1008511AA /* TravelingApp-Bootcamp.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +166,10 @@
 				Base,
 			);
 			mainGroup = 3699FA2A2C2E98D1008511AA;
+			packageReferences = (
+				3650C2B52C32C45D008B305D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3650C2B82C32C4A0008B305D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 3699FA342C2E98D1008511AA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -389,6 +401,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3650C2B52C32C45D008B305D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		3650C2B82C32C4A0008B305D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3650C2B62C32C45D008B305D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3650C2B52C32C45D008B305D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		3650C2B92C32C4A0008B305D /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3650C2B82C32C4A0008B305D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3699FA2B2C2E98D1008511AA /* Project object */;
 }
