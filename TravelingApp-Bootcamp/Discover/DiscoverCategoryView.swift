@@ -54,30 +54,79 @@ struct DiscoverCategoryView: View {
     }
 }
 
-struct CategoryDetailView: View {
-    var body: some View {
-        ScrollView {
-            ForEach(0..<5, id: \.self){ num in
-                VStack (alignment: . leading, spacing: 0) {
-                    Image("Sarajevo")
-                        .resizable()
-                        .scaledToFill()
-                    Text("Sarajevo - Muzej iluzija")
-                        .font(.subheadline)
-                        .padding()
-                        
-                }
-                .asTile()
-                .padding()
-            }
-            
+class CategoryDetailsViewModel: ObservableObject {
+    @Published var isLoading = true
+    @Published var places = [Int]()
+    
+    init() {
+        //Networc code will hapen here
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isLoading = false
+            self.places = [1,2,3,4,5,6,7]
         }
-        .navigationBarTitle("Category", displayMode: .inline)
+    }
+}
+//Loader code ----------------
+struct ActivityIndicatorView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIActivityIndicatorView {
+        let aiv = UIActivityIndicatorView(style: .large)
+            aiv.startAnimating()
+        aiv.color = .white
+            return aiv
+    }
+    
+    typealias UIViewType = UIActivityIndicatorView
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+        
+    }
+}
+//-----------------------
+
+struct CategoryDetailView: View {
+    @ObservedObject var vm = CategoryDetailsViewModel()
+    var body: some View {
+        ZStack {
+            if vm.isLoading {
+                VStack {
+                    ActivityIndicatorView()
+                    Text("Loading")
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+                }
+                .padding()
+                .background(Color.black)
+                .cornerRadius(10)
+                
+            }
+            else {
+                
+                ScrollView {
+                    ForEach(vm.places, id: \.self){ num in
+                        VStack (alignment: . leading, spacing: 0) {
+                            Image("Sarajevo")
+                                .resizable()
+                                .scaledToFill()
+                            Text("Lorem ipsum dolor sit amet")
+                                .font(.subheadline)
+                                .padding()
+                            
+                        }
+                        .asTile()
+                        .padding()
+                    }
+                    
+                }
+                .navigationBarTitle("Category", displayMode: .inline)
+            }
+        }
+        
     }
 }
 
 struct DiscoverCategoryView_Previews: PreviewProvider {
     static var previews: some View {
         DiscoverCategoryView()
+        CategoryDetailView()
     }
 }
