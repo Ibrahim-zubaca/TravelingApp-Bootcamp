@@ -110,6 +110,8 @@ import Kingfisher
 import SDWebImageSwiftUI
 
 struct CategoryDetailView: View {
+
+    
     @ObservedObject var vm = CategoryDetailsViewModel()
     var body: some View {
         ZStack {
@@ -126,25 +128,27 @@ struct CategoryDetailView: View {
                 
             }
             else {
-                
-                ScrollView {
-                    ForEach(vm.places, id: \.self){ place in
-                        VStack (alignment: . leading, spacing: 0) {
-                            KFImage(URL(string: place.thumbnail))
-                                .resizable()
-                                .scaledToFill()
-                            Text(place.name)
-                                .font(.subheadline)
-                                .padding()
-                            
+                    
+                    ScrollView {
+
+                        ForEach(vm.places, id: \.self){ place in
+                            VStack (alignment: . leading, spacing: 0) {
+                                KFImage(URL(string: place.thumbnail))
+                                    .resizable()
+                                    .scaledToFill()
+                                Text(place.name)
+                                    .font(.subheadline)
+                                    .padding()
+                                
+                            }
+                            .asTile()
+                            .padding()
                         }
-                        .asTile()
-                        .padding()
+                        
                     }
                     
-                }
-                .navigationBarTitle("Category", displayMode: .inline)
-             
+                    .navigationBarTitle("Category", displayMode: .inline)
+                
             }
         }
         

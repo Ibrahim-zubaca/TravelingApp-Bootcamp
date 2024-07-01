@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-
+extension Color {
+    
+}
 
 struct DiscoverView: View {
     //Init to change title bar color in whole app
