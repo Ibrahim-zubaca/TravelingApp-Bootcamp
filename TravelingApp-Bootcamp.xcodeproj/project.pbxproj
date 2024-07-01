@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3650C2B42C32904D008B305D /* BorderBgModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650C2B32C32904D008B305D /* BorderBgModifier.swift */; };
 		3699FA372C2E98D1008511AA /* TravelingApp_BootcampApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */; };
 		3699FA392C2E98D1008511AA /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699FA382C2E98D1008511AA /* DiscoverView.swift */; };
 		3699FA3B2C2E98D2008511AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3699FA3A2C2E98D2008511AA /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3650C2B32C32904D008B305D /* BorderBgModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderBgModifier.swift; sourceTree = "<group>"; };
 		3699FA332C2E98D1008511AA /* TravelingApp-Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TravelingApp-Bootcamp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelingApp_BootcampApp.swift; sourceTree = "<group>"; };
 		3699FA382C2E98D1008511AA /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3650C2AE2C328E53008B305D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3650C2B32C32904D008B305D /* BorderBgModifier.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		3699FA2A2C2E98D1008511AA = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 		3699FA352C2E98D1008511AA /* TravelingApp-Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				3650C2AE2C328E53008B305D /* Utilities */,
 				3699FA462C2EFCDE008511AA /* Discover */,
 				3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */,
 				3699FA3A2C2E98D2008511AA /* Assets.xcassets */,
@@ -174,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3699FA4C2C2EFFE3008511AA /* PopularRestaurantsView.swift in Sources */,
+				3650C2B42C32904D008B305D /* BorderBgModifier.swift in Sources */,
 				3699FA392C2E98D1008511AA /* DiscoverView.swift in Sources */,
 				3699FA372C2E98D1008511AA /* TravelingApp_BootcampApp.swift in Sources */,
 				3699FA4A2C2EFFA6008511AA /* TrendingCreatorsView.swift in Sources */,

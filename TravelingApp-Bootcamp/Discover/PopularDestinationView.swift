@@ -63,8 +63,7 @@ struct PopularDestinationView: View {
                                 .foregroundColor(.gray)
                         }
                             .padding(.bottom)
-                            .background(.thinMaterial)
-                            .cornerRadius(10)
+                            .asTile()
                             //.shadow(radius: 4, x:0, y:0)
                             
                     }
@@ -76,6 +75,7 @@ struct PopularDestinationView: View {
         }
     }
 }
+
 
 struct PopularDestinationView_Previews: PreviewProvider {
     static var previews: some View {

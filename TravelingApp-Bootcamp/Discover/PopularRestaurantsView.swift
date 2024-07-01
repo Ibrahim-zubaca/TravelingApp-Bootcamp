@@ -73,8 +73,7 @@ struct PopularRestaurantsView: View {
                             }
                         }
                             .frame(width: 270)
-                            .background(.thinMaterial)
-                            .cornerRadius(10)
+                            .asTile()
                             
                             
                             
