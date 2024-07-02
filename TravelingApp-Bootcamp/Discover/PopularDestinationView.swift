@@ -140,7 +140,7 @@ struct PopularDestinationDetailView: View {
             .padding()
             
             Map(coordinateRegion: $region)
-                .frame(height: 250)
+                .frame(height: 300)
             
             
     }
