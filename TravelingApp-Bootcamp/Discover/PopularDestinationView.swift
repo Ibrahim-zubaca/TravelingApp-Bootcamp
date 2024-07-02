@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 //POPULAR DESTINATION SECTION ----------------------------------
 struct Destination:Hashable {
@@ -98,6 +99,8 @@ struct PopularDestinationTile: View {
 //DESTINATION DETAIL VIEW ---------------------------
 struct PopularDestinationDetailView: View {
     
+    @State var region = MKCoordinateRegion(center: .init(latitude: 43.855362764465326, longitude: 18.410800638474353), span: .init(latitudeDelta: 0.04, longitudeDelta: 0.04))
+    
     let destination: Destination
     
     var body: some View {
@@ -125,14 +128,26 @@ struct PopularDestinationDetailView: View {
                 }
             }
             .padding(.horizontal)
-            Text("Sarajevo is the capital and most influential city of Bosnia and Herzegovina and located between Croatia and Serbia, and 150 kilometers away from Montenegro. The city is surrounded with Dinaric Alps and every season sparks various beautiful sights. Although its history dates back to prehistoric times, Sarajevo arose as a significant Ottoman stronghold during the 15th century. Now, the city is a growing tourism destination with many historical, natural and cultural attractions. Sarajevo International Airport is located 10 kilometers away from the city center. You can get to the city center with shuttle bus, taxi and car.")
+            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean blandit eleifend enim ac tincidunt. Quisque congue id est eget dictum. Nam vel gravida nibh. Pellentesque vel commodo magna. Nullam vel iaculis ipsum. Nunc ultricies nunc id augue porta, a dapibus velit congue. Praesent eros augue, ultricies ut eleifend vitae, blandit non odio. ")
                 .padding(.horizontal)
+            
+            HStack {
+                Text("Location")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Spacer()
+            }
+            .padding()
+            
+            Map(coordinateRegion: $region)
+                .frame(height: 250)
             
             
     }
         .navigationBarTitle(destination.name, displayMode: .inline)
+        
+        
 }
-    
     
     struct PopularDestinationView_Previews: PreviewProvider {
         static var previews: some View {
