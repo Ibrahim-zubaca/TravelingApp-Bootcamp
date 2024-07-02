@@ -8,10 +8,22 @@
 import SwiftUI
 
 //RESTAURANTS MAIN PAGE SLIDER ----------------------------------
+struct userReview: Hashable {
+    let user, userImage: String
+}
+
 struct Restaurants:Hashable {
     let name: String, imageName: String
+    
 }
 struct PopularRestaurantsView: View {
+    
+    let reviews: [userReview] = [
+        .init(user: "Eva Adams", userImage: "person 1"),
+        .init(user: "Jane Doe", userImage: "person 2"),
+        .init(user: "Chris Colins", userImage: "person 3"),
+        .init(user: "Sam Pupers", userImage: "person 3")
+    ]
     
     let restaurants: [Restaurants] = [
         .init(name: "Japanese Sushi", imageName: "sushi"),
@@ -36,7 +48,7 @@ struct PopularRestaurantsView: View {
                 HStack (spacing: 8.0) {
                     ForEach(restaurants, id: \.self) { restaurant in
                         NavigationLink(
-                            destination: RestaurantDetailsView(restaurant: restaurant),
+                            destination: RestaurantDetailsView( restaurant: restaurant),
                             label: {RestaurantTile(restaurant: restaurant)})
                         
                             
@@ -54,7 +66,9 @@ struct PopularRestaurantsView: View {
 
 //RESTAURANT DETAIL VIEW -----------------------------------------------
 struct RestaurantDetailsView: View {
+    
     let restaurant: Restaurants
+
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomLeading) {
@@ -154,7 +168,53 @@ struct RestaurantDetailsView: View {
                     }
                 }
                 .padding()
+                
+                HStack{
+                    Text("Customer Reviews")
+                        .fontWeight(.semibold)
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                VStack (alignment: .leading) {
+                    HStack(spacing: 16) {
+                        Image("person2")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 60)
+                            .cornerRadius(100)
+                        
+                        VStack (alignment: .leading) {
+                            Text("Amy Adams")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                            HStack (spacing: 3) {
+                                ForEach (0..<5, id: \.self) {num in
+                                    Image(systemName: "star.fill")
+                                        .font(.caption)
+                                        .foregroundColor(.orange)
+                                        
+                                }
+                            }
+                            
+                        }
+                        Spacer()
+                        Text("Jun 2024")
+                            .font(.subheadline)
+                    }
+                    Text("Lorem ipsum dolor sit amet, consectetur a")
+                        .font(.subheadline)
+                        
+                }
+                .padding(.horizontal)
+                
+                
+                
             }
+            
+            
+            
             
             
         }
@@ -219,5 +279,7 @@ struct PopularRestaurantsView_Previews: PreviewProvider {
         
     }
 }
+
+
 
 
