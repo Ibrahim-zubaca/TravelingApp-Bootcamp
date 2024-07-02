@@ -103,10 +103,9 @@ struct RestaurantDetailsView: View {
                 
                 HStack {
                     ForEach(0..<3, id: \.self) {num in
-                    Image(systemName: "dollarsign.circle.fill")
-                            .foregroundColor(.orange)
+                            Image(systemName: "dollarsign.circle.fill")
+                                .foregroundColor(.orange)
                             .font(.title2)
-                            
                     }
                 }
                 
@@ -128,11 +127,22 @@ struct RestaurantDetailsView: View {
                 HStack (spacing: 16) {
                     ForEach (0..<5, id: \.self){num in
                         VStack(alignment: .leading) {
-                            Image(restaurant.imageName)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: 100)
-                                .cornerRadius(8)
+                            ZStack(alignment: .bottomLeading){
+                                Image(restaurant.imageName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    
+                                
+                                LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black]), startPoint: .center, endPoint: .bottom)
+                                
+                                Text("$ 36.99")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                    .padding(5)
+                            }
+                            .frame(height: 100)
+                            .cornerRadius(8)
                             
                             Text("Lorem ipsum")
                                 .font(.subheadline)
