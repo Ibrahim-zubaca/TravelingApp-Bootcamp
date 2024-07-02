@@ -96,11 +96,16 @@ struct RestaurantDetailsView: View {
                         
                     }
                     Spacer()
-                    Text("See more photos")
-                        .foregroundColor(.white)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.trailing)
-                        .frame(width: 80)
+                    
+                    NavigationLink (
+                        destination: RestaurantPhotosView()) {
+                            Text("See more photos")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.trailing)
+                                .frame(width: 80)
+                        }
+                    
                 }
                 .padding()
                 
