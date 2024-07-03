@@ -50,6 +50,7 @@ struct DiscoverView: View {
                     .cornerRadius(25)
                     
                     }
+                .padding(.top)
             }
             
             .navigationTitle("Discover")

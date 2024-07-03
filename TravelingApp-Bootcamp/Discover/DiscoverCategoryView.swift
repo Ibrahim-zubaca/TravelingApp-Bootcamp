@@ -51,6 +51,7 @@ struct DiscoverCategoryView: View {
             .padding(.top)
             .padding(.bottom,30)
         }
+        .padding(.top)
     }
 }
 
