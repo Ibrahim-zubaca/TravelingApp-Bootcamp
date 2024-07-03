@@ -41,21 +41,12 @@ struct TrendingCreatorsView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 20){
                         ForEach(creators, id: \.self) { user in
-                            VStack {
-                                VStack {
-                                    Image(user.imageName)
-                                        .resizable()
-                                        .scaledToFill()
-                                }
-                                .frame(width: 70, height: 70)
-                                .cornerRadius(.infinity)
-                                .shadow(color: .gray, radius: 4, x: 0, y: 0)
-                                
-                                Text(user.name)
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .padding(.top, 5)
-                            }
+                            NavigationLink(
+                                destination: UserDetailsView(user: user),
+                                label: {
+                                    DiscoverUserView(user: user)
+                                })
+                            
                         }
                     }
                     .padding(.horizontal)
@@ -67,6 +58,28 @@ struct TrendingCreatorsView: View {
         }
     }
 
+struct DiscoverUserView: View {
+    
+    let user: User
+    var body: some View {
+        VStack {
+            VStack {
+                Image(user.imageName)
+                    .resizable()
+                    .scaledToFill()
+            }
+            .frame(width: 70, height: 70)
+            .cornerRadius(.infinity)
+            .shadow(color: .gray, radius: 4, x: 0, y: 0)
+            
+            Text(user.name)
+                .font(.caption)
+                .foregroundColor(.black)
+                .fontWeight(.semibold)
+                .padding(.top, 5)
+        }
+    }
+}
 struct TrendingCreatorsView_Previews: PreviewProvider {
     static var previews: some View {
         TrendingCreatorsView()

@@ -11,6 +11,7 @@
 		3650C2B72C32C45D008B305D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3650C2B62C32C45D008B305D /* Kingfisher */; };
 		3650C2BA2C32C4A0008B305D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3650C2B92C32C4A0008B305D /* SDWebImageSwiftUI */; };
 		3650C2BD2C342772008B305D /* RestaurantPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650C2BC2C342772008B305D /* RestaurantPhotosView.swift */; };
+		3650C2C02C3438E2008B305D /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650C2BF2C3438E2008B305D /* UserDetailsView.swift */; };
 		3699FA372C2E98D1008511AA /* TravelingApp_BootcampApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */; };
 		3699FA392C2E98D1008511AA /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3699FA382C2E98D1008511AA /* DiscoverView.swift */; };
 		3699FA3B2C2E98D2008511AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3699FA3A2C2E98D2008511AA /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		3650C2B32C32904D008B305D /* BorderBgModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderBgModifier.swift; sourceTree = "<group>"; };
 		3650C2BC2C342772008B305D /* RestaurantPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantPhotosView.swift; sourceTree = "<group>"; };
+		3650C2BF2C3438E2008B305D /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		3699FA332C2E98D1008511AA /* TravelingApp-Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TravelingApp-Bootcamp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelingApp_BootcampApp.swift; sourceTree = "<group>"; };
 		3699FA382C2E98D1008511AA /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,15 @@
 			path = Restaurant;
 			sourceTree = "<group>";
 		};
+		3650C2BE2C343586008B305D /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				3699FA492C2EFFA6008511AA /* TrendingCreatorsView.swift */,
+				3650C2BF2C3438E2008B305D /* UserDetailsView.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		3699FA2A2C2E98D1008511AA = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +99,7 @@
 			children = (
 				3650C2AE2C328E53008B305D /* Utilities */,
 				3699FA462C2EFCDE008511AA /* Discover */,
+				3650C2BE2C343586008B305D /* Users */,
 				3699FA362C2E98D1008511AA /* TravelingApp_BootcampApp.swift */,
 				3699FA3A2C2E98D2008511AA /* Assets.xcassets */,
 				3699FA3C2C2E98D2008511AA /* Preview Content */,
@@ -121,10 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				3699FA382C2E98D1008511AA /* DiscoverView.swift */,
-				3699FA472C2EFEF3008511AA /* PopularDestinationView.swift */,
-				3699FA492C2EFFA6008511AA /* TrendingCreatorsView.swift */,
-				3650C2BB2C342715008B305D /* Restaurant */,
 				3699FA4D2C2F002C008511AA /* DiscoverCategoryView.swift */,
+				3699FA472C2EFEF3008511AA /* PopularDestinationView.swift */,
+				3650C2BB2C342715008B305D /* Restaurant */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 				3650C2B42C32904D008B305D /* BorderBgModifier.swift in Sources */,
 				3699FA392C2E98D1008511AA /* DiscoverView.swift in Sources */,
 				3699FA372C2E98D1008511AA /* TravelingApp_BootcampApp.swift in Sources */,
+				3650C2C02C3438E2008B305D /* UserDetailsView.swift in Sources */,
 				3699FA4A2C2EFFA6008511AA /* TrendingCreatorsView.swift in Sources */,
 				3699FA482C2EFEF3008511AA /* PopularDestinationView.swift in Sources */,
 				3650C2BD2C342772008B305D /* RestaurantPhotosView.swift in Sources */,
